@@ -46,7 +46,10 @@ void loop() {
   Serial.println("DataLM35 : "+String(dataLM) +", suhu : "+ String(suhuHasil));
   Serial.println("DataLDR : "+String(dataLDR));
   
+  lcd.setCursor(0,0);
+  lcd.print("sh : " +String(suhuHasil)+ ", lm : "+String(dataLM)+"  ");
   kondisi = cekKondisi(suhuHasil, dataLDR);
+  
   displayLCD(kondisi);
   lampuLed(kondisi);
   delay(1000);
@@ -63,7 +66,7 @@ String cekKondisi(int sh, int ldr){
 
 // untuk display lcd
 void displayLCD(String kon){
-  lcd.setCursor(0,0);
+  lcd.setCursor(0,1);
   lcd.print(String(kon)+"          ");
 }
 
